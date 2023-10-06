@@ -14,7 +14,7 @@ resource "kubernetes_manifest" "http_route" {
       "routes" = [
         {
           "kind"  = "Rule"
-          "match" = "Host(`tickets.senatorkube.es`)"
+          "match" = "Host(`glpi.example.org`)"
           "services" = [
             {
               "name" = "glpi-service"
