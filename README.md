@@ -10,20 +10,25 @@ Habrá que modificar también el **dominio** en el **ingressroute**.
 # Variables que se pueden cambiar
 namespace:
 - name
+
 pv:
 - name
 - labels
 - capacity.storage
 - access_modes
 - host_path
+
 pvc:
 - name
+
 apps:
 - name
 - replicas
+
 svc:
 - name
 - selector
+
 ingressroute:
 - name
 - entrypoints
