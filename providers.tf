@@ -8,5 +8,5 @@ terraform {
 }
 
 provider "kubernetes" {
-  config_path = "/home/agarces/kubectl/local_config"
+  config_path = "/home/agarces/kubectl/shr_debian_kubeconfig"
 }

@@ -8,14 +8,14 @@ resource "kubernetes_persistent_volume" "pv-glpi" {
     }
   }
   spec {
-    storage_class_name = "microk8s-hostpath"
+    storage_class_name = "openebs-hostpath"
     capacity = {
-      storage = "1Gi"
+      storage = "2Gi"
     }
     access_modes = ["ReadWriteOnce"]
     persistent_volume_source {
       host_path {
-        path = "/home/agarces/pruebas/inventario/volumes/glpi"
+        path = "/var/openebs/local/webs/inventario/glpi"
       }
     }
   }
@@ -31,14 +31,14 @@ resource "kubernetes_persistent_volume" "pv-mariadb" {
     }
   }
   spec {
-    storage_class_name = "microk8s-hostpath"
+    storage_class_name = "openebs-hostpath"
     capacity = {
-      storage = "3Gi"
+      storage = "10Gi"
     }
     access_modes = ["ReadWriteOnce"]
     persistent_volume_source {
       host_path {
-        path = "/home/agarces/pruebas/inventario/volumes/mariadb"
+        path = "/var/openebs/local/webs/inventario/mariadb"
       }
     }
   }

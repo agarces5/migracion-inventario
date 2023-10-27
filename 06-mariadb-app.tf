@@ -28,6 +28,11 @@ resource "kubernetes_stateful_set" "mariadb-deploy" {
               name = kubernetes_secret.mariadb-config.metadata.0.name
             }
           }
+          env {
+            name  = "TIMEZONE"
+            value = "Europe/Madrid"
+          }
+
           volume_mount {
             name       = "mariadb-data"
             mount_path = "/var/lib/mysql"

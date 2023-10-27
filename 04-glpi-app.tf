@@ -4,7 +4,7 @@ resource "kubernetes_stateful_set" "glpi-deploy" {
     namespace = kubernetes_namespace.prueba-glpi.metadata.0.name
   }
   spec {
-    replicas = 1
+    replicas = 3
     selector {
       match_labels = {
         app = kubernetes_service.glpi-service.spec.0.selector.app
@@ -18,6 +18,15 @@ resource "kubernetes_stateful_set" "glpi-deploy" {
         }
       }
       spec {
+        init_container {
+          name    = "init-htaccess"
+          image   = "alpine/git"
+          command = ["sh", "-c", "git clone https://github.com/playa-senator/ip-block-forti.git /ip-block-forti && /init/ip-block"]
+          volume_mount {
+            name       = "glpi-data"
+            mount_path = "/init"
+          }
+        }
         container {
           name  = "glpi"
           image = "diouxx/glpi"
